@@ -4,7 +4,7 @@ const axios = require('axios')
 
 require('dotenv').config();
 
-
+const apiKey = process.env.STEAM_API_KEY;
 
 describe('streamService', () => {
     describe('getOneMonthAgoTimestamp', ()=> {
@@ -17,8 +17,18 @@ describe('streamService', () => {
         });
     });
     describe('getAllGames', () => {
-        it('should be able to perform a get request to steam and get a valid response', async () => {
-            const response = await axios.get()
+        it('should return the top 500 most recent ids', async () => {
+            const mockGames = Array.from({ length: 600 }, (_, index) => ({ id: index, name: `Game ${index}` }));
+            axios.get.mockResolvedValue({ data: mockGames})
+
+            const result = await streamService.getAllGames();
+
+            expect(result.legnth).toEqual(500)
+
+            expect(result[0]).toHaveProperty('id')
+            expect(result[0]).toHaveProperty('name')
         });
     })
 });
+
+
