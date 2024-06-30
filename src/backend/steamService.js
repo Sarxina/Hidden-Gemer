@@ -10,24 +10,37 @@ function getOneMonthAgoTimestamp() {
 }
 
 const getAllGames = async () => {
-  const response = await axios.get('https://api.steampowered.com/ISteamApps/GetAppList/v2/', {
-    params: { key: apiKey }
-  });
-  const allGames = response.data.applist.apps;
-  const recentGames = allGames.sort((a, b) => b.appid - a.appid).slice(0, 500);
-  return recentGames;
+  try {
+    const response = await axios.get('https://api.steampowered.com/ISteamApps/GetAppList/v2/', {
+      params: { key: apiKey }
+    });
+    return response.data.applist.apps.sort((a, b) => b.appid - a.appdid).slice(0, 500)
+  } catch (error) {
+    console.error('ZFailed to get all games', error);
+    return [];
+  }
 };
 
 const getGameDetails = async (appId) => {
-  const response = await axios.get('https://store.steampowered.com/api/appdetails', {
-    params: { appids: appId, key: apiKey },
-  });
-  return response.data[appId].data;
+  try {
+    const response = await axios.get('https://store.steampowered.com/api/appdetails', {
+      params: { appids: appId, key: apiKey },
+    });
+    return response.data[appId].data;
+  } catch (error) {
+    console.log(`Fialed to get details for game ${appId}`, error);
+    return null;
+  }
 };
 
 const getReviewHistogram = async (appId) => {
-  const response = await axios.get(`https://store.steampowered.com/appreviewhistogram/${appId}?l=english`);
-  return response.data.results;
+  try {
+    const response = await axios.get(`https://store.steampowered.com/appreviewhistogram/${appId}?l=english`);
+    return response.data.results;
+  } catch (error) {
+    console.log(`Failed to get review histogram for game ${appId}:`, error);
+    return null;
+  }
 };
 
 const calculateReviewScore = (reviewData) => {
@@ -44,26 +57,19 @@ const calculateReviewScore = (reviewData) => {
 
 const filterGames = async (games) => {
   const oneMonthAgo = getOneMonthAgoTimestamp();
-
   const filteredGamesPromises = games.map(async (game) => {
     try {
       const gameData = await getGameDetails(game.appid);
-
-      if (!gameData || gameData.type !== 'game') {
-        return null;
-      }
+      if (!gameData || gameData.type !== 'game') return null;
 
       const releaseDate = new Date(gameData.release_date.date);
-      if (releaseDate.getTime() / 1000 < oneMonthAgo) {
-        return null;
-      }
+      if (releaseData.getTime() / 1000 < oneMonthAgo) return null;
 
       const reviewData = await getReviewHistogram(game.appid);
-      const reviewScore = calculateReviewScore(reviewData);
+      if (!reviewData) return null;
 
-      if (reviewScore < 66.67) {
-        return null;
-      }
+      const reviewScore = calculateReviewScore(reviewData);
+      if (reviewScore < 66.67) return null;
 
       return {
         name: gameData.name,
@@ -71,6 +77,7 @@ const filterGames = async (games) => {
         players: gameData.owners || 0,
       };
     } catch (error) {
+      console.error(`Error filtering game ${game.appid}:`, error);
       return null;
     }
   });
@@ -83,10 +90,11 @@ const filterGames = async (games) => {
 
 const getFilteredGames = async () => {
   const allGames = await getAllGames();
-  const filteredGames = await filterGames(allGames);
-  return filteredGames;
+  return filterGames(allGames);
 };
 
+// Exports
 module.exports = {
   getFilteredGames,
+  },
 };

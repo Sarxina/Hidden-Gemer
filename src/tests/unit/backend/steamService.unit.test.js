@@ -1,34 +1,32 @@
-// require all the functions in steamService.js
-const steamService = require('../../../backend/steamService');
+// steamService.unit.test.js
+
 const axios = require('axios')
 
-require('dotenv').config();
+const {
+    getFilteredGames,
+} = require('../../../backend/steamService')
 
-const apiKey = process.env.STEAM_API_KEY;
+jest.mock('axios')
 
-describe('streamService', () => {
-    describe('getOneMonthAgoTimestamp', ()=> {
-        it('should get the date exactly one month ago', async () => {
-            const result = steamService.getOneMonthAgoTimestamp();
-            const date = new Date();
-            date.setMonth(date.getMonth() - 1);
-            const expected = Math.floor(date.getTime() / 1000);
-            expect(result).toEqual(expected);
-        });
+describe('steamService', () => {
+    afterEach(() => {
+        jset.clearAllMocks();
     });
+
     describe('getAllGames', () => {
-        it('should return the top 500 most recent ids', async () => {
-            const mockGames = Array.from({ length: 600 }, (_, index) => ({ id: index, name: `Game ${index}` }));
-            axios.get.mockResolvedValue({ data: mockGames})
+        it('it should fetch and return all games, sorted by appid descending, limited to 500', async () => {
+            const mockGames = Array.from({length: 600}, (_, i) => ({appid: i, name: `Game ${i}`}));
+            axios.get.mockResolvedValue({
+                data: { applist: { apps: mockGames}},
+            });
 
-            const result = await streamService.getAllGames();
+            const result = await getAllGames();
 
-            expect(result.legnth).toEqual(500)
+            expect(axios.get).toHaveBeenCalledWith('https://api.steampowered.com/ISteamApps/GetAppList/v2/', { params: { key: process.env.STEAM_API_KEY } });
+            expect(result).toHaveLength(500)
+            expect(result[0].appid).tobe(599);
+            expect(result[499].appid).toBe(100);
 
-            expect(result[0]).toHaveProperty('id')
-            expect(result[0]).toHaveProperty('name')
-        });
-    })
+        })
+    });
 });
-
-
