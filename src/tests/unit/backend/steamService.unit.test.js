@@ -1,99 +1,63 @@
 // steamService.unit.test.js
-
-jest.mock('axios');
-const axios = require('axios');
+jest.mock('../../../backend/steamServiceUtils', () => ({
+    getAllGames: jest.fn(),
+    getGameDetails: jest.fn(),
+    getReviewHistogram: jest.fn(),
+    getPlayerCount: jest.fn(),
+    calculateReviewScore: jest.fn()
+}));
 const fs = require('fs')
-
-const {getFilteredGames, _test} = require('../../../backend/steamService')
-const {
-    getAllGames,
-    getGameDetails,
-    getReviewHistogram,
-    calculateReviewScore,
-    filterGames,
-} = _test;
-
-
-
+const {filterGames} = require('../../../backend/steamService');
+const { getGameDetails, getReviewHistogram, getPlayerCount, getAllGames, calculateReviewScore } = require('../../../backend/steamServiceUtils');
 
 describe('steamService', () => {
-    afterEach(() => {
-        axios.reset();  // Reset the mock after each test
-    });
+    describe('filterGames', () => {
+        let formattedDate;
+        beforeEach(() => {
 
-    it('should fetch and return all games, sorted by appid descending, limited to 500', async () => {
-        const mockGames = Array.from({ length: 600 }, (_, i) => ({ appid: i, name: `Game ${i}` }));
-        axios.get.mockResolvedValue({
-            data: { applist: { apps: mockGames } },
+            const today = new Date();
+            const options = {year: 'numeric', month: 'short', day : 'numeric'};
+            formattedDate = today.toLocaleDateString('en-US', options);
+
         });
+        it('should filter games that are not of type "game', async () => {
+            const mockGameList = {"applist": {"apps" : [
+                {"appid" : 1, "name" : "Game1"},
+                {"appid" : 2, "name" : "Game2"},
+            ]}};
+            const mockReturnGameList = mockGameList.applist.apps.sort((a, b) => b.appid - a.appid).slice(0, 500)
+            const mockGameDetails1 = {"1" : {"data" : {
+                "type" : "game",
+                "name" : "Game1",
+                "release_date" : {"date" : formattedDate}
+            }}};
+            const mockGameDetails2 = {"2" : {"data" : {
+                "type" : "dlc",
+                "name" : "Game2",
+                "release_date" : {"date" : formattedDate}
+            }}};
+            const mockReviewHisogram1 = {"success": 1, "results" : {"recent" : [
+                {"recommendations_up" : 100, "recommendations_down" : 1}
+            ]}};
+            const mockReviewHisogram2 = {"success": 1, "results" : {"recent" : [
+                {"recommendations_up" : 100, "recommendations_down" : 1}
+            ]}};
 
-        const result = await getAllGames();
+            getGameDetails.mockResolvedValueOnce(mockGameDetails1["1"].data);
+            getGameDetails.mockResolvedValueOnce(mockGameDetails2["2"].data);
+            getReviewHistogram.mockResolvedValueOnce(mockReviewHisogram1.results);
+            //getReviewHistogram.mockResolvedValueOnce(mockReviewHisogram2.result);
+            calculateReviewScore.mockResolvedValueOnce(99.00)
+            //calculateReviewScore.mockResolvedValueOnce(99.00)
+            getPlayerCount.mockResolvedValueOnce(500);
+            getPlayerCount.mockResolvedValueOnce(500);
 
-        expect(axios.get).toHaveBeenCalledWith('https://api.steampowered.com/ISteamApps/GetAppList/v2/', { params: { key: process.env.STEAM_API_KEY } });
-        expect(result).toHaveLength(500);
-        expect(result[0].appid).toBe(599);
-        expect(result[499].appid).toBe(100);
-    });
 
-    it('should handle errors and return an empty array', async () => {
-        axios.get.mockRejectedValue(new Error('API error'));
+            const result = await filterGames(mockReturnGameList);
 
-        const result = await getAllGames();
-
-        expect(result).toEqual([]);
-    });
-    describe('getGameDetails', () => {
-        it('should fetch and return game details', async () => {
-            const mockGameDetails = JSON.parse(fs.readFileSync('src/tests/unit/backend/testEldenRingDetails.json', 'utf8'));
-            const expectedData = mockGameDetails["1245620"].data
-
-            axios.get.mockResolvedValue({data: mockGameDetails});
-
-            const result = await getGameDetails(1245620)
-
-            expect(axios.get).toHaveBeenCalledWith('https://store.steampowered.com/api/appdetails', {
-                 params: { appids: 1245620, key: process.env.STEAM_API_KEY
-                 }});
-            expect(result).toEqual(expectedData);
-        })
-        it('should handle errors and return null', async() => {
-            axios.get.mockRejectedValue(new Error('API error'));
-
-            const result = await getGameDetails();
-
-            expect(result).toEqual(null);
-        })
-    })
-    describe('getReviewHistogram', () => {
-        it('should fetch and return game review histogram', async () => {
-            const mockGameHistogram = JSON.parse(fs.readFileSync('src/tests/unit/backend/testEldenRingReviews.json', 'utf8'));
-            const expectedData = mockGameHistogram.results
-
-            axios.get.mockResolvedValue({data: mockGameHistogram});
-
-            const result = await getReviewHistogram(1245620);
-
-            expect(axios.get).toHaveBeenCalledWith('https://store.steampowered.com/appreviewhistogram', {
-                params: {appids: 1245620, key: process.env.STEAM_API_KEY
-                }});
-            expect(result).toEqual(expectedData);
-        });
-        it('should handle errors and return null', async() => {
-            axios.get.mockRejectedValue(new Error('API error'));
-
-            const result = await getReviewHistogram(1245620);
-
-            expect(result).toEqual(null);
+            expect(result).toEqual([
+                {"name" : "Game1", "url" : `https://store.steampowered.com/app/1`, "players" : 500}
+            ])
         });
     });
-    describe('calculateReviewScore', () => {
-        it('should take a review hisogram and return a review score', async () => {
-            const mockGameHistogram = JSON.parse(fs.readFileSync('src/tests/unit/backend/testEldenRingReviews.json', 'utf8'));
-
-            const result = await calculateReviewScore(mockGameHistogram);
-
-            expect(result).toEqual(1);
-        })
-    });
-
 });
