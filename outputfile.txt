@@ -1,0 +1,267 @@
+
+> test
+> jest
+
+FAIL src/tests/unit/backend/steamService.unit.test.js
+  ● Console
+
+    console.error
+      Failed to get all games Error: API error
+          at Object.<anonymous> (C:\Users\aleck\Documents\HiddenGemer\src\tests\unit\backend\steamService.unit.test.js:39:37)
+          at Promise.then.completed (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\utils.js:298:28)
+          at new Promise (<anonymous>)
+          at callAsyncCircusFn (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\utils.js:231:10)
+          at _callCircusTest (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\run.js:316:40)
+          at processTicksAndRejections (node:internal/process/task_queues:95:5)
+          at _runTest (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\run.js:252:3)
+          at _runTestsForDescribeBlock (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\run.js:126:9)
+          at _runTestsForDescribeBlock (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\run.js:121:9)
+          at run (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\run.js:71:3)
+          at runAndTransformResultsToJestFormat (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+          at jestAdapter (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+          at runTestInternal (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-runner\build\runTest.js:367:16)
+          at runTest (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-runner\build\runTest.js:444:34)
+
+    [0m [90m 18 |[39m     [36mreturn[39m response[33m.[39mdata[33m.[39mapplist[33m.[39mapps[33m.[39msort((a[33m,[39m b) [33m=>[39m b[33m.[39mappid [33m-[39m a[33m.[39mappid)[33m.[39mslice([35m0[39m[33m,[39m [35m500[39m)
+     [90m 19 |[39m   } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 20 |[39m     console[33m.[39merror([32m'Failed to get all games'[39m[33m,[39m error)[33m;[39m
+     [90m    |[39m             [31m[1m^[22m[39m
+     [90m 21 |[39m     [36mreturn[39m [][33m;[39m
+     [90m 22 |[39m   }
+     [90m 23 |[39m }[33m;[39m[0m
+
+      at error (src/backend/steamService.js:20:13)
+      at Object.<anonymous> (src/tests/unit/backend/steamService.unit.test.js:41:24)
+
+    console.log
+      Fialed to get details for game undefined Error: API error
+          at Object.<anonymous> (C:\Users\aleck\Documents\HiddenGemer\src\tests\unit\backend\steamService.unit.test.js:60:41)
+          at Promise.then.completed (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\utils.js:298:28)
+          at new Promise (<anonymous>)
+          at callAsyncCircusFn (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\utils.js:231:10)
+          at _callCircusTest (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\run.js:316:40)
+          at processTicksAndRejections (node:internal/process/task_queues:95:5)
+          at _runTest (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\run.js:252:3)
+          at _runTestsForDescribeBlock (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\run.js:126:9)
+          at _runTestsForDescribeBlock (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\run.js:121:9)
+          at _runTestsForDescribeBlock (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\run.js:121:9)
+          at run (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\run.js:71:3)
+          at runAndTransformResultsToJestFormat (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+          at jestAdapter (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+          at runTestInternal (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-runner\build\runTest.js:367:16)
+          at runTest (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-runner\build\runTest.js:444:34)
+
+      at log (src/backend/steamService.js:32:13)
+
+    console.log
+      Failed to get review histogram for game 1245620: Error: API error
+          at Object.<anonymous> (C:\Users\aleck\Documents\HiddenGemer\src\tests\unit\backend\steamService.unit.test.js:82:41)
+          at Promise.then.completed (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\utils.js:298:28)
+          at new Promise (<anonymous>)
+          at callAsyncCircusFn (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\utils.js:231:10)
+          at _callCircusTest (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\run.js:316:40)
+          at processTicksAndRejections (node:internal/process/task_queues:95:5)
+          at _runTest (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\run.js:252:3)
+          at _runTestsForDescribeBlock (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\run.js:126:9)
+          at _runTestsForDescribeBlock (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\run.js:121:9)
+          at _runTestsForDescribeBlock (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\run.js:121:9)
+          at run (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\run.js:71:3)
+          at runAndTransformResultsToJestFormat (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+          at jestAdapter (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+          at runTestInternal (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-runner\build\runTest.js:367:16)
+          at runTest (C:\Users\aleck\Documents\HiddenGemer\node_modules\jest-runner\build\runTest.js:444:34)
+
+      at log (src/backend/steamService.js:42:13)
+
+  ● steamService › getReviewHistogram › should fetch and return game review histogram
+
+    expect(received).toHaveBeenCalledWith(...expected)
+
+    Expected: "https://store.steampowered.com/appreviewhistogram", {"params": {"appids": 1245620, "key": undefined}}
+    Received
+           1
+              "https://api.steampowered.com/ISteamApps/GetAppList/v2/",
+              Object {
+                "params": Object {
+            -     "appids": 1245620,
+                  "key": undefined,
+                },
+              },
+           2
+              "https://api.steampowered.com/ISteamApps/GetAppList/v2/",
+              Object {
+                "params": Object {
+            -     "appids": 1245620,
+                  "key": undefined,
+                },
+              },
+           3
+              "https://store.steampowered.com/api/appdetails",
+              {"params": {"appids": 1245620, "key": undefined}},
+
+    Number of calls: 5
+
+    [0m [90m 74 |[39m             [36mconst[39m result [33m=[39m [36mawait[39m getReviewHistogram([35m1245620[39m)[33m;[39m
+     [90m 75 |[39m
+    [31m[1m>[22m[39m[90m 76 |[39m             expect(axios[33m.[39m[36mget[39m)[33m.[39mtoHaveBeenCalledWith([32m'https://store.steampowered.com/appreviewhistogram'[39m[33m,[39m {
+     [90m    |[39m                               [31m[1m^[22m[39m
+     [90m 77 |[39m                 params[33m:[39m {appids[33m:[39m [35m1245620[39m[33m,[39m key[33m:[39m process[33m.[39menv[33m.[39m[33mSTEAM_API_KEY[39m
+     [90m 78 |[39m                 }})[33m;[39m
+     [90m 79 |[39m             expect(result)[33m.[39mtoEqual(expectedaData)[33m;[39m[0m
+
+      at Object.toHaveBeenCalledWith (src/tests/unit/backend/steamService.unit.test.js:76:31)
+
+  ● steamService › calculateReviewScore › should take a review hisogram and return a review score
+
+    TypeError: Cannot read properties of undefined (reading 'reduce')
+
+    [0m [90m 46 |[39m
+     [90m 47 |[39m [36mconst[39m calculateReviewScore [33m=[39m (reviewData) [33m=>[39m {
+    [31m[1m>[22m[39m[90m 48 |[39m   [36mconst[39m totalRecommendationsUp [33m=[39m reviewData[33m.[39mrecent[33m.[39mreduce((acc[33m,[39m review) [33m=>[39m acc [33m+[39m review[33m.[39mrecommendations_up[33m,[39m [35m0[39m)[33m;[39m
+     [90m    |[39m                                                    [31m[1m^[22m[39m
+     [90m 49 |[39m   [36mconst[39m totalRecommendationsDown [33m=[39m reviewData[33m.[39mrecent[33m.[39mreduce((acc[33m,[39m review) [33m=>[39m acc [33m+[39m review[33m.[39mrecommendations_down[33m,[39m [35m0[39m)[33m;[39m
+     [90m 50 |[39m   [36mconst[39m totalRecommendations [33m=[39m totalRecommendationsUp [33m+[39m totalRecommendationsDown[33m;[39m
+     [90m 51 |[39m[0m
+
+      at reduce (src/backend/steamService.js:48:52)
+      at Object.calculateReviewScore (src/tests/unit/backend/steamService.unit.test.js:93:34)
+
+FAIL src/frontend/src/App.test.js
+  ● Test suite failed to run
+
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+
+    Details:
+
+    SyntaxError: C:\Users\aleck\Documents\HiddenGemer\src\frontend\src\App.test.js: Support for the experimental syntax 'jsx' isn't currently enabled (5:10):
+
+    [0m [90m 3 |[39m
+     [90m 4 |[39m test([32m'renders learn react link'[39m[33m,[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 5 |[39m   render([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+     [90m   |[39m          [31m[1m^[22m[39m
+     [90m 6 |[39m   [36mconst[39m linkElement [33m=[39m screen[33m.[39mgetByText([35m/learn react/i[39m)[33m;[39m
+     [90m 7 |[39m   expect(linkElement)[33m.[39mtoBeInTheDocument()[33m;[39m
+     [90m 8 |[39m })[33m;[39m[0m
+
+    Add @babel/preset-react (https://github.com/babel/babel/tree/main/packages/babel-preset-react) to the 'presets' section of your Babel config to enable transformation.
+    If you want to leave it as-is, add @babel/plugin-syntax-jsx (https://github.com/babel/babel/tree/main/packages/babel-plugin-syntax-jsx) to the 'plugins' section to enable parsing.
+
+    If you already added the plugin for this syntax to your config, it's possible that your config isn't being loaded.
+    You can re-run Babel with the BABEL_SHOW_CONFIG_FOR environment variable to show the loaded configuration:
+    	npx cross-env BABEL_SHOW_CONFIG_FOR=C:\Users\aleck\Documents\HiddenGemer\src\frontend\src\App.test.js <your build command>
+    See https://babeljs.io/docs/configuration#print-effective-configs for more info.
+
+      at constructor (node_modules/@babel/parser/src/parse-error.ts:74:19)
+      at Parser.toParseError [as raise] (node_modules/@babel/parser/src/tokenizer/index.ts:1497:19)
+      at Parser.raise [as expectOnePlugin] (node_modules/@babel/parser/src/tokenizer/index.ts:1562:18)
+      at Parser.expectOnePlugin [as parseExprAtom] (node_modules/@babel/parser/src/parser/expression.ts:1283:16)
+      at Parser.parseExprAtom [as parseExprSubscripts] (node_modules/@babel/parser/src/parser/expression.ts:709:23)
+      at Parser.parseExprSubscripts [as parseUpdate] (node_modules/@babel/parser/src/parser/expression.ts:686:21)
+      at Parser.parseUpdate [as parseMaybeUnary] (node_modules/@babel/parser/src/parser/expression.ts:649:23)
+      at Parser.parseMaybeUnary [as parseMaybeUnaryOrPrivate] (node_modules/@babel/parser/src/parser/expression.ts:390:14)
+      at Parser.parseMaybeUnaryOrPrivate [as parseExprOps] (node_modules/@babel/parser/src/parser/expression.ts:402:23)
+      at Parser.parseExprOps [as parseMaybeConditional] (node_modules/@babel/parser/src/parser/expression.ts:357:23)
+      at Parser.parseMaybeConditional [as parseMaybeAssign] (node_modules/@babel/parser/src/parser/expression.ts:297:21)
+      at parseMaybeAssign (node_modules/@babel/parser/src/parser/expression.ts:251:12)
+      at Parser.callback [as allowInAnd] (node_modules/@babel/parser/src/parser/expression.ts:3132:12)
+      at Parser.allowInAnd [as parseMaybeAssignAllowIn] (node_modules/@babel/parser/src/parser/expression.ts:250:17)
+      at Parser.parseMaybeAssignAllowIn [as parseExprListItem] (node_modules/@babel/parser/src/parser/expression.ts:2755:18)
+      at Parser.parseExprListItem [as parseCallExpressionArguments] (node_modules/@babel/parser/src/parser/expression.ts:1041:14)
+      at Parser.parseCallExpressionArguments [as parseCoverCallAndAsyncArrowHead] (node_modules/@babel/parser/src/parser/expression.ts:883:29)
+      at Parser.parseCoverCallAndAsyncArrowHead [as parseSubscript] (node_modules/@babel/parser/src/parser/expression.ts:772:19)
+      at Parser.parseSubscript [as parseSubscripts] (node_modules/@babel/parser/src/parser/expression.ts:730:19)
+      at Parser.parseSubscripts [as parseExprSubscripts] (node_modules/@babel/parser/src/parser/expression.ts:715:17)
+      at Parser.parseExprSubscripts [as parseUpdate] (node_modules/@babel/parser/src/parser/expression.ts:686:21)
+      at Parser.parseUpdate [as parseMaybeUnary] (node_modules/@babel/parser/src/parser/expression.ts:649:23)
+      at Parser.parseMaybeUnary [as parseMaybeUnaryOrPrivate] (node_modules/@babel/parser/src/parser/expression.ts:390:14)
+      at Parser.parseMaybeUnaryOrPrivate [as parseExprOps] (node_modules/@babel/parser/src/parser/expression.ts:402:23)
+      at Parser.parseExprOps [as parseMaybeConditional] (node_modules/@babel/parser/src/parser/expression.ts:357:23)
+      at Parser.parseMaybeConditional [as parseMaybeAssign] (node_modules/@babel/parser/src/parser/expression.ts:297:21)
+      at Parser.parseMaybeAssign [as parseExpressionBase] (node_modules/@babel/parser/src/parser/expression.ts:220:23)
+      at parseExpressionBase (node_modules/@babel/parser/src/parser/expression.ts:211:39)
+      at Parser.callback [as allowInAnd] (node_modules/@babel/parser/src/parser/expression.ts:3127:16)
+      at Parser.allowInAnd [as parseExpression] (node_modules/@babel/parser/src/parser/expression.ts:211:17)
+      at Parser.parseExpression [as parseStatementContent] (node_modules/@babel/parser/src/parser/statement.ts:640:23)
+      at Parser.parseStatementContent [as parseStatementLike] (node_modules/@babel/parser/src/parser/statement.ts:421:17)
+      at Parser.parseStatementLike [as parseStatementListItem] (node_modules/@babel/parser/src/parser/statement.ts:370:17)
+      at Parser.parseStatementListItem [as parseBlockOrModuleBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1389:16)
+      at Parser.parseBlockOrModuleBlockBody [as parseBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1362:10)
+      at Parser.parseBlockBody [as parseBlock] (node_modules/@babel/parser/src/parser/statement.ts:1330:10)
+      at Parser.parseBlock [as parseFunctionBody] (node_modules/@babel/parser/src/parser/expression.ts:2593:24)
+      at Parser.parseFunctionBody [as parseArrowExpression] (node_modules/@babel/parser/src/parser/expression.ts:2534:10)
+      at Parser.parseArrowExpression [as parseParenAndDistinguishExpression] (node_modules/@babel/parser/src/parser/expression.ts:1829:12)
+      at Parser.parseParenAndDistinguishExpression [as parseExprAtom] (node_modules/@babel/parser/src/parser/expression.ts:1165:21)
+      at Parser.parseExprAtom [as parseExprSubscripts] (node_modules/@babel/parser/src/parser/expression.ts:709:23)
+      at Parser.parseExprSubscripts [as parseUpdate] (node_modules/@babel/parser/src/parser/expression.ts:686:21)
+      at Parser.parseUpdate [as parseMaybeUnary] (node_modules/@babel/parser/src/parser/expression.ts:649:23)
+      at Parser.parseMaybeUnary [as parseMaybeUnaryOrPrivate] (node_modules/@babel/parser/src/parser/expression.ts:390:14)
+      at Parser.parseMaybeUnaryOrPrivate [as parseExprOps] (node_modules/@babel/parser/src/parser/expression.ts:402:23)
+      at Parser.parseExprOps [as parseMaybeConditional] (node_modules/@babel/parser/src/parser/expression.ts:357:23)
+      at Parser.parseMaybeConditional [as parseMaybeAssign] (node_modules/@babel/parser/src/parser/expression.ts:297:21)
+      at parseMaybeAssign (node_modules/@babel/parser/src/parser/expression.ts:251:12)
+      at Parser.callback [as allowInAnd] (node_modules/@babel/parser/src/parser/expression.ts:3132:12)
+      at Parser.allowInAnd [as parseMaybeAssignAllowIn] (node_modules/@babel/parser/src/parser/expression.ts:250:17)
+      at Parser.parseMaybeAssignAllowIn [as parseExprListItem] (node_modules/@babel/parser/src/parser/expression.ts:2755:18)
+      at Parser.parseExprListItem [as parseCallExpressionArguments] (node_modules/@babel/parser/src/parser/expression.ts:1041:14)
+      at Parser.parseCallExpressionArguments [as parseCoverCallAndAsyncArrowHead] (node_modules/@babel/parser/src/parser/expression.ts:883:29)
+      at Parser.parseCoverCallAndAsyncArrowHead [as parseSubscript] (node_modules/@babel/parser/src/parser/expression.ts:772:19)
+      at Parser.parseSubscript [as parseSubscripts] (node_modules/@babel/parser/src/parser/expression.ts:730:19)
+      at Parser.parseSubscripts [as parseExprSubscripts] (node_modules/@babel/parser/src/parser/expression.ts:715:17)
+      at Parser.parseExprSubscripts [as parseUpdate] (node_modules/@babel/parser/src/parser/expression.ts:686:21)
+      at Parser.parseUpdate [as parseMaybeUnary] (node_modules/@babel/parser/src/parser/expression.ts:649:23)
+      at Parser.parseMaybeUnary [as parseMaybeUnaryOrPrivate] (node_modules/@babel/parser/src/parser/expression.ts:390:14)
+      at Parser.parseMaybeUnaryOrPrivate [as parseExprOps] (node_modules/@babel/parser/src/parser/expression.ts:402:23)
+      at Parser.parseExprOps [as parseMaybeConditional] (node_modules/@babel/parser/src/parser/expression.ts:357:23)
+      at Parser.parseMaybeConditional [as parseMaybeAssign] (node_modules/@babel/parser/src/parser/expression.ts:297:21)
+      at Parser.parseMaybeAssign [as parseExpressionBase] (node_modules/@babel/parser/src/parser/expression.ts:220:23)
+      at parseExpressionBase (node_modules/@babel/parser/src/parser/expression.ts:211:39)
+      at Parser.callback [as allowInAnd] (node_modules/@babel/parser/src/parser/expression.ts:3127:16)
+      at Parser.allowInAnd [as parseExpression] (node_modules/@babel/parser/src/parser/expression.ts:211:17)
+      at Parser.parseExpression [as parseStatementContent] (node_modules/@babel/parser/src/parser/statement.ts:640:23)
+      at Parser.parseStatementContent [as parseStatementLike] (node_modules/@babel/parser/src/parser/statement.ts:421:17)
+      at Parser.parseStatementLike [as parseModuleItem] (node_modules/@babel/parser/src/parser/statement.ts:358:17)
+      at Parser.parseModuleItem [as parseBlockOrModuleBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1388:16)
+      at Parser.parseBlockOrModuleBlockBody [as parseBlockBody] (node_modules/@babel/parser/src/parser/statement.ts:1362:10)
+      at Parser.parseBlockBody [as parseProgram] (node_modules/@babel/parser/src/parser/statement.ts:217:10)
+      at Parser.parseProgram [as parseTopLevel] (node_modules/@babel/parser/src/parser/statement.ts:199:25)
+      at Parser.parseTopLevel [as parse] (node_modules/@babel/parser/src/parser/index.ts:45:10)
+      at parse (node_modules/@babel/parser/src/index.ts:67:38)
+      at parser (node_modules/@babel/core/src/parser/index.ts:28:19)
+          at parser.next (<anonymous>)
+      at normalizeFile (node_modules/@babel/core/src/transformation/normalize-file.ts:50:24)
+          at normalizeFile.next (<anonymous>)
+      at run (node_modules/@babel/core/src/transformation/index.ts:39:36)
+          at run.next (<anonymous>)
+      at transform (node_modules/@babel/core/src/transform.ts:29:20)
+          at transform.next (<anonymous>)
+      at evaluateSync (node_modules/gensync/index.js:251:28)
+      at sync (node_modules/gensync/index.js:89:14)
+      at fn (node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:99:14)
+      at transformSync (node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (node_modules/@jest/transform/build/ScriptTransformer.js:545:31)
+      at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/ScriptTransformer.js:674:40)
+      at ScriptTransformer.transform (node_modules/@jest/transform/build/ScriptTransformer.js:726:19)
+
+Test Suites: 2 failed, 2 total
+Tests:       2 failed, 5 passed, 7 total
+Snapshots:   0 total
+Time:        0.561 s, estimated 1 s
+Ran all test suites.

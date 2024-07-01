@@ -14,9 +14,10 @@ const getAllGames = async () => {
     const response = await axios.get('https://api.steampowered.com/ISteamApps/GetAppList/v2/', {
       params: { key: apiKey }
     });
-    return response.data.applist.apps.sort((a, b) => b.appid - a.appdid).slice(0, 500)
+    //console.log(response.data.applist.apps.sort((a, b) => b.appid - a.appid).slice(0, 500))
+    return response.data.applist.apps.sort((a, b) => b.appid - a.appid).slice(0, 500)
   } catch (error) {
-    console.error('ZFailed to get all games', error);
+    console.error('Failed to get all games', error);
     return [];
   }
 };
@@ -96,5 +97,13 @@ const getFilteredGames = async () => {
 // Exports
 module.exports = {
   getFilteredGames,
-  },
-};
+
+  _test: {
+    getAllGames,
+    getGameDetails,
+    getReviewHistogram,
+    getReviewHistogram,
+    calculateReviewScore,
+    filterGames
+  }
+}
