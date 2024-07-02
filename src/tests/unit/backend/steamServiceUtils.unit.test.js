@@ -1,6 +1,9 @@
 jest.mock('axios');
 const axios = require('axios');
-const { getAllGames, getGameDetails, getReviewHistogram, getPlayerCount, calculateReviewScore } = require('./steamServiceUtils');
+const fs = require('fs')
+
+const { getAllGames, getGameDetails, getReviewHistogram, getPlayerCount, calculateReviewScore } = require('../../../backend/steamServiceUtils');
+
 
 describe("steamServiceUtils", () => {
     afterEach(() => {

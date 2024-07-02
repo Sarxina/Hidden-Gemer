@@ -1,8 +1,12 @@
+const {getOneMonthAgoTimestamp, getGameDetails, getReviewHistogram, calculateReviewScore, getPlayerCount} = require('./steamServiceUtils')
+
 const filterGames = async (games) => {
     const oneMonthAgo = getOneMonthAgoTimestamp();
     const filteredGamesPromises = games.map(async (game) => {
       try {
         const gameData = await getGameDetails(game.appid);
+        console.log(gameData) // Added log for game data details
+        console.log(game) // Added log for initial game details
         if (!gameData || gameData.type !== 'game') return null;
 
         const releaseDate = new Date(gameData.release_date.date);
@@ -14,8 +18,10 @@ const filterGames = async (games) => {
         const reviewScore = calculateReviewScore(reviewData.results);
         if (reviewScore < 66.67) return null;
 
-        const currentPlayers = getPlayerCount(game.appid);
+        const currentPlayers = await getPlayerCount(game.appid);
 
+        //console.log(gameData)
+        //console.log(game)
         return {
           name: gameData.name,
           url: `https://store.steampowered.com/app/${game.appid}`,
@@ -33,4 +39,6 @@ const filterGames = async (games) => {
     return filteredGames;
   };
 
-
+module.exports = {
+  filterGames
+};

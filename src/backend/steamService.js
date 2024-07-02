@@ -1,6 +1,7 @@
-const { getAllGames, getGameDetails, getReviewHistogram, getPlayerCount, calculateReviewScore } = require('./steamServiceUtils');
 
 
+const {getAllGames} = require('./steamServiceUtils');
+const {filterGames} = require('./filterGames');
 
 const getFilteredGames = async () => {
   const allGames = await getAllGames();
