@@ -6,6 +6,7 @@ const apiKey = process.env.STEAM_API_KEY;
 function getOneMonthAgoTimestamp() {
     const date = new Date();
     date.setMonth(date.getMonth() - 1);
+    console.log(`Math.floor(date.getTime() / 100) = ${Math.floor(date.getTime() / 1000)}`)
     return Math.floor(date.getTime() / 1000);
   }
 

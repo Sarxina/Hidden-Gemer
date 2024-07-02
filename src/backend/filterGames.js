@@ -5,18 +5,23 @@ const filterGames = async (games) => {
     const filteredGamesPromises = games.map(async (game) => {
       try {
         const gameData = await getGameDetails(game.appid);
-        console.log(gameData) // Added log for game data details
-        console.log(game) // Added log for initial game details
+        console.log(gameData)
         if (!gameData || gameData.type !== 'game') return null;
+        console.log("made it past gamedetails");
 
         const releaseDate = new Date(gameData.release_date.date);
         if (releaseDate.getTime() / 1000 < oneMonthAgo) return null;
+        console.log("Made it past get time");
 
+        console.log(`Sending ${game.appid} to getReviewHistogram`);
         const reviewData = await getReviewHistogram(game.appid);
-        if (!reviewData) return null;
+        console.log(reviewData)
+        if (!reviewData || !reviewData.results.recent || reviewData.results.recent.length === 0) return null;
+        console.log("made it past review data")
 
         const reviewScore = calculateReviewScore(reviewData.results);
         if (reviewScore < 66.67) return null;
+        console.log("Made it past review score")
 
         const currentPlayers = await getPlayerCount(game.appid);
 
