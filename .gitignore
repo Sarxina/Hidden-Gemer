@@ -58,3 +58,5 @@ docker-compose.override.yaml
 
 # PostgreSQL data
 pgdata/
+
+src/tests/misc/

@@ -6,7 +6,6 @@ const apiKey = process.env.STEAM_API_KEY;
 function getOneMonthAgoTimestamp() {
     const date = new Date();
     date.setMonth(date.getMonth() - 1);
-    console.log(`Math.floor(date.getTime() / 100) = ${Math.floor(date.getTime() / 1000)}`)
     return Math.floor(date.getTime() / 1000);
   }
 
@@ -15,7 +14,6 @@ function getOneMonthAgoTimestamp() {
       const response = await axios.get('https://api.steampowered.com/ISteamApps/GetAppList/v2/', {
         params: { key: apiKey }
       });
-      //console.log(response.data.applist.apps.sort((a, b) => b.appid - a.appid).slice(0, 500))
       return response.data.applist.apps.sort((a, b) => b.appid - a.appid).slice(0, 500)
     } catch (error) {
       console.error('Failed to get all games', error);
@@ -23,7 +21,7 @@ function getOneMonthAgoTimestamp() {
     }
   };
 
-  const getGameDetails = async (appId) => {
+  const getGameDetails = async (appIds) => {
     try {
       const response = await axios.get('https://store.steampowered.com/api/appdetails', {
         params: { appids: appId, key: apiKey },
@@ -63,7 +61,7 @@ function getOneMonthAgoTimestamp() {
         params : {"appid" : appId, "key" : apiKey}
       });
     } catch (error) {
-      console.log(`Failed to get player count for game ${appId}:`, error);
+      //console.log(`Failed to get player count for game ${appId}:`, error);
       return null
     }
   }

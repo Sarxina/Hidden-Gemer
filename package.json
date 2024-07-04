@@ -8,7 +8,7 @@
     "jest-mock-axios": "^4.5.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --silent --verbose=false --detectOpenHandles"
   },
   "dependencies": {
     "axios": "^1.7.2"
